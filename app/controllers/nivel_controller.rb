@@ -1,0 +1,2 @@
+class NivelController < ApplicationController
+end
