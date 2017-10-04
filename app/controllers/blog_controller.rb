@@ -1,2 +1,42 @@
 class BlogController < ApplicationController
+  def new
+    @Course=Course.all
+  end
+  def create
+
+    curso = Course.new(course_params)
+    curso.save
+    redirect_to :action => 'new' 
+  end
+  def show
+    @Course = Course.find(params[:id])
+  end
+  def edit
+    @curso = Course.find(params[:id]);
+    @titulo = @curso.title;
+    @descripcion = @curso.description;
+    
+  end
+
+
+  def update
+    @titulo = params[:post]["titulo"];
+    @titulos = params[:post]["titulo"];
+    
+   
+  
+  end
+
+  def destroy
+    @tarea = Course.find(params[:id])
+    @tarea.destroy
+    redirect_to :action => 'new' 
+    
+  end
+
+  private
+
+  def course_params
+     params.require(:post).permit( :title , :description,:avatar)
+  end
 end

@@ -1,0 +1,19 @@
+<center>
+  <%= form_for :post , :url => { :action => :update , :method => :put }   do |f| %>
+  <p>
+    <%= f.label :name %><br>
+    <%= f.text_field :name , {:value => @titulo } %>
+  </p>
+
+  <p>
+    <%= f.label :description %><br>
+    <%= f.text_area :description , {:value => @descripcion } %>
+  </p>
+
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
+<br>
+
+</center>
