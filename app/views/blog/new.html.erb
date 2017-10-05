@@ -1,4 +1,4 @@
-<center>Gerson Revatta
+<center>
   <%= form_for :post ,  :url => { :action => :create }  ,  html: { multipart: true }  do |f| %>
   <p>
     <%= f.label :title %><br>
@@ -25,8 +25,11 @@
 
 <center>
 <h3> List </h3>
+
   <% @Course.each do |i| %>
-    <p><%= i.title %></p>
+  <div class="list">
+    
+    <p>Title: <%= i.title %></p>
     <p>
     <%= image_tag i.avatar.url(:thumb) %>
     </p>
@@ -35,17 +38,19 @@
     
     | 
     <%= link_to "Eliminar",{ :action => :destroy, :id => i.id } , :method => :delete %>
+  </div>
+  <br>
   <% end %>
 
 </center>
-     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> 
+     
 <script>
   (function(){
     function filePreview(input){
       if(input.files && input.files[0]){
         var reader = new FileReader();
         reader.onload = function(e){
-          $('#imagePreview').html("<img src='"+e.target.result+"' />");
+          $('#imagePreview').html("<img  src='"+e.target.result+"' />");
         }
         reader.readAsDataURL(input.files[0]);
       }
@@ -56,4 +61,18 @@
     });
   })();
 </script>
-         
+         <style>
+         /* pre visualizacion form */
+      img {
+        max-width: 50px;
+        height: auto;
+      }
+
+      /* List */
+      .list{
+        height: 200px;
+        width: 500px;
+        border: solid 1px red;
+      }
+
+         </style>
