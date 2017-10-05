@@ -11,9 +11,11 @@
   </p>
   
   <p>
-    <%= f.file_field :avatar , :id => 'files', :name =>"files[]"%>
+    <%= f.file_field :avatar , :id => 'imagen' %>
   </p>
-  <output id="list"></output>
+  <p>
+    <div id="imagePreview"></div>
+  </p>
   <p>
     <%= f.submit %>
   </p>
@@ -26,7 +28,6 @@
   <% @Course.each do |i| %>
     <p><%= i.title %></p>
     <p>
-      
     <%= image_tag i.avatar.url(:thumb) %>
     </p>
     |<%= link_to "show",{ :action => :show, :id => i.id }  %>
@@ -37,34 +38,22 @@
   <% end %>
 
 </center>
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> 
+<script>
+  (function(){
+    function filePreview(input){
+      if(input.files && input.files[0]){
+        var reader = new FileReader();
+        reader.onload = function(e){
+          $('#imagePreview').html("<img src='"+e.target.result+"' />");
+        }
+        reader.readAsDataURL(input.files[0]);
+      }
 
+    }
+    $('#imagen').change(function(){
+      filePreview(this);
+    });
+  })();
+</script>
          
-        <script>
-              function archivo(evt) {
-                  var files = evt.target.files; // FileList object
-             
-                  // Obtenemos la imagen del campo "file".
-                  for (var i = 0, f; f = files[i]; i++) {
-                    //Solo admitimos imágenes.
-                    if (!f.type.match('image.*')) {
-                        continue;
-                    }
-             
-                    var reader = new FileReader();
-             
-                    reader.onload = (function(theFile) {
-                        return function(e) {
-                          // Insertamos la imagen
-                         document.getElementById("list").innerHTML = ['<img class="thumb" src="', e.target.result,'" title="', escape(theFile.name), '"/>'].join('');
-                        };
-                    })(f);
-             
-                    reader.readAsDataURL(f);
-                  }
-              }
-             
-              document.getElementById('files').addEventListener('change', archivo, false);
-      </script>
-      <style>
-        
-      </style>
