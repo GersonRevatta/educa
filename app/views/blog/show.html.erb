@@ -1,6 +1,6 @@
 <center>
   
   <h2><%= @Course.title %></h2>
-  <p><%= image_tag @Course.avatar.url %></p>
+  <p><%= image_tag @Course.avatar.url(:thumb) %></p>
   <p><%= @Course.description %></p>
 </center>

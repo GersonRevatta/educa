@@ -37,7 +37,7 @@
     <%= image_tag i.avatar.url(:thumb) %>
     </p>
     |<%= link_to "show",{ :action => :show, :id => i.id }  %>
-    | Editar
+    |<%= link_to "Edit",{ :action => :edit, :id => i.id }  %>
     
     | 
     <%= link_to "Eliminar",{ :action => :destroy, :id => i.id } , :method => :delete %>

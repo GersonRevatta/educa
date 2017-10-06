@@ -18,13 +18,11 @@ class BlogController < ApplicationController
     
   end
 
-
   def update
-    @titulo = params[:post]["titulo"];
-    @titulos = params[:post]["titulo"];
+    @curso = Course.find(params[:id])
+    @curso.update_attributes(course_params)
+    redirect_to :action => 'edit' 
     
-   
-  
   end
 
   def destroy
