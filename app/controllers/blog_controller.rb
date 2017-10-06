@@ -1,6 +1,8 @@
 class BlogController < ApplicationController
   def new
-    @Course=Course.all
+    #@posta = Course.page(params[:page]).per_page(3)
+    #@Course=Course.all
+    @Course=Course.page(params[:page]).per_page(2)
   end
   def create
 

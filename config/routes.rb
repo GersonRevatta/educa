@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   get 'blog/apiReport'
-
+  
   resources :blog do
     resources :comment
   end
