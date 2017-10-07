@@ -1,6 +1,19 @@
 <!-- Form -->
 <center>
-  <%= form_for :post ,  :url => { :action => :create }  ,  html: { multipart: true }  do |f| %>
+  <%= form_for (@course),  :url => { :action => :create }  do |f| %>
+   <!-- Mensajes de error  -->
+  <% if @course.errors.any? %>
+    <div id="errorExplanation">
+      <h2><%= pluralize(@course.errors.count, "error") %> prohibited
+        this post from being saved:</h2>
+      <ul>
+        <% @course.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <!-- campos -->
   <p>
     <%= f.label :title %><br>
     <%= f.text_field :title ,:placeholder => 'Titulo' %>
@@ -29,7 +42,7 @@
 <center>
 <h3> List </h3>
 
-  <% @Course.each do |i| %>
+  <% @Courses.each do |i| %>
   <div class="list">
     
     <p>Title: <%= i.title %></p>
@@ -45,7 +58,7 @@
   <br>
   <% end %>
 
-       <%= will_paginate(@Course) %>
+       
 </center>
      
 <script>

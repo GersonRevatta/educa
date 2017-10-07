@@ -3,4 +3,13 @@
   <h2><%= @Course.title %></h2>
   <p><%= image_tag @Course.avatar.url(:thumb) %></p>
   <p><%= @Course.description %></p>
+
+
+
+
+<br>
+<h3>Agregaar tema</h3>
+  
+  |<%= link_to 'Agregar Tema', new_blog_theme_path(@Course) %>
+
 </center>

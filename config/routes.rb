@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
   get 'blog/apiReport'
-  
+
   resources :blog do
-    resources :comment
+    resources :theme
   end
   
   namespace :api do 

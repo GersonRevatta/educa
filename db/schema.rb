@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171005084035) do
+ActiveRecord::Schema.define(version: 20171006181937) do
 
   create_table "comments", force: :cascade do |t|
     t.text "content"
@@ -27,6 +27,12 @@ ActiveRecord::Schema.define(version: 20171005084035) do
     t.string "avatar_content_type"
     t.integer "avatar_file_size"
     t.datetime "avatar_updated_at"
+  end
+
+  create_table "themes", force: :cascade do |t|
+    t.string "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end

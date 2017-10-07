@@ -3,7 +3,7 @@
 </center> -->
 <br>
 <center>
-  <%= form_for :post , :url => { :action => :update   }  , :method => :put do |f| %>
+  <%= form_for :course , :url => { :action => :update   }  , :method => :put do |f| %>
   <p>
     <%= f.label :title %><br>
     <%= f.text_field :title , {:value => @curso.title } %>
